@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #ff3366;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: sparkle 1.5s infinite alternate;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 24px;
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        #yes {
+            background-color: #92f0a3;
+        }
+        #no {
+            background-color: #ff6f61;
+        }
+        #gif {
+            width: 250px;
+            margin-top: 20px;
+            animation: float 3s infinite ease-in-out;
+        }
+        #message {
+            display: none;
+            color: #ff3366;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        @keyframes sparkle {
+            0% { color: #ff3366; text-shadow: 0 0 10px #ff3366, 0 0 20px #ff3366, 0 0 30px #ff3366; }
+            100% { color: #ff99cc; text-shadow: 0 0 10px #ff99cc, 0 0 20px #ff99cc, 0 0 30px #ff99cc; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="buttons">
+        <button id="yes" onclick="accept()">Yes</button>
+        <button id="no" onmouseover="showMessage()" onmouseout="hideMessage()" onclick="shrinkNo()">No</button>
+    </div>
+    
+    <!-- Cute GIF -->
+    <img id="gif" src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOWk4c3k0ZzFpeG5ucDRtajhtMmRzYm1ma3Vsa2tpemp1ZXZ2NDRxbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/9d3LQ6TdV2Flo8ODTU/giphy.gif" alt="cute gif">
+
+    <div id="message">Are you sure? 💔</div>
+
+    <script>
+        let noButton = document.getElementById("no");
+        let size = 24;
+        
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        function hideMessage() {
+            document.getElementById("message").style.display = "none";
+        }
+
+        function shrinkNo() {
+            if (size > 5) {
+                size -= 5;
+                noButton.style.fontSize = size + "px";
+                noButton.style.padding = (size / 2) + "px " + (size) + "px";
+            } else {
+                noButton.style.display = "none";
+            }
+        }
+
+        function accept() {
+            document.body.innerHTML = "<h1>Yay! I knew you'd say yes</h1>";
+        }
+    </script>
+</body>
+</html>
